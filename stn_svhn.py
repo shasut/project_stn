@@ -63,7 +63,7 @@ def stn_color_svhn(train_epoch=15, use_stn=True, use_coord_conv=False, verbose=F
     TRAIN_EP = train_epoch
     LRT = 1e-2
     BATCH_SIZE = 100
-    MODEL_NAME = "STNetBaseColor_SVN"
+    # MODEL_NAME = "STNetBaseColor_SVN"
 
     from my_data_loaders import my_data_loader_svhn
     train_loader, test_loader = my_data_loader_svhn(data_path, BATCH_SIZE)
@@ -72,14 +72,14 @@ def stn_color_svhn(train_epoch=15, use_stn=True, use_coord_conv=False, verbose=F
     # model = STNetBaseColor().to(device)
     # from torchsummary import summary
     # summary(model, (1, 28, 28))
-    if use_coord_conv:
+    if use_coord_conv == False:
         model = STNetBaseColorSVHN(use_stn=use_stn).to(device)
         MODEL_NAME = "STNetBaseColorSVHN"
-        print("Model: STN Base Model with Color Input SVHN Dataset\n")
+        # print("Model: STN Base Model with Color Input SVHN Dataset\n")
     else:
         model = STNetBaseCoordConvColorSVHN(use_stn=use_stn).to(device)
         MODEL_NAME = "STNetBaseCoordConvColorSVHN"
-        print("Model: STN with CoordConv Base Model with Color Input SVHN Datase\n")
+        # print("Model: STN with CoordConv Base Model with Color Input SVHN Datase\n")
 
     optimizer = optim.SGD(model.parameters(), lr=LRT)
 

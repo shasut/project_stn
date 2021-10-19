@@ -69,14 +69,14 @@ def stn_base(train_epoch=15, use_stn=True, use_coord_conv=False, verbose=False, 
 
     from MyNetworks import STNetBase, STNetCoordConv
 
-    if use_coord_conv:
+    if use_coord_conv==False:
         model = STNetBase(use_stn=use_stn).to(device)
         MODEL_NAME = "STNBase"
-        print("Model: STN Base Model")
+        # print("Model: STN Base Model")
     else:
         model = STNetCoordConv(use_stn=use_stn).to(device)
         MODEL_NAME = "STNetCoordConv"
-        print("Model: STN with CoordConv Base Model")
+        # print("Model: STN with CoordConv Base Model")
 
 
     # from torchsummary import summary

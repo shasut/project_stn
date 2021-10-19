@@ -67,7 +67,7 @@ def stn_deform_conv(train_epoch=15, use_stn=True, use_coord_conv=False, verbose=
 
     from MyNetworks import STNetBaseDeformConv
     model = STNetBaseDeformConv(use_stn=use_stn).to(device)
-    print("Model: STN DeformCovNets Base Model\n")
+    # print("Model: STN DeformCovNets Base Model\n")
 
     # from torchsummary import summary
     # summary(model, (1, 28, 28))

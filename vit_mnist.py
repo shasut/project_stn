@@ -71,7 +71,7 @@ def vit_base(train_epoch=15, use_stn=True, use_coord_conv=False, verbose=False, 
 
     from MyNetworks import STNetBaseViT
     model = STNetBaseViT(use_stn=use_stn).to(device)
-    print("Model: STN ViT Base Model\n")
+    # print("Model: STN ViT Base Model\n")
 
 
     # from torchsummary import summary

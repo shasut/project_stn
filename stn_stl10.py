@@ -64,14 +64,14 @@ def stn_color_stl(train_epoch=15, use_stn=True, use_coord_conv=False, verbose=Fa
     from MyNetworks import STNetBaseColorSTL, STNetBaseCoordConvColorSTL
     # model = STNetBaseColorSTL().to(device)
 
-    if use_coord_conv:
+    if use_coord_conv==False:
         model = STNetBaseColorSTL(use_stn=use_stn).to(device)
         MODEL_NAME = "STNetBaseColorSTL"
-        print("Model: STN Base Model with Color Input\n")
+        # print("Model: STN Base Model with Color Input\n")
     else:
         model = STNetBaseCoordConvColorSTL(use_stn=use_stn).to(device)
         MODEL_NAME = "STNetBaseCoordConvColorSTL"
-        print("Model: STN with CoordConv Base Model with Color Input\n")
+        # print("Model: STN with CoordConv Base Model with Color Input\n")
 
 
 
