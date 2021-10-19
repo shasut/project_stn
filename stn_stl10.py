@@ -17,7 +17,6 @@ import time
 from my_utils import createDirectoryIfNotExits, plot_loss, roc_multiclass, plot_confusion_matrix
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-os.environ['CUDA_LAUNCH_BLOCKING'] = "1"
 import math
 def convert_image_np(inp):
     """Convert a Tensor to numpy image."""
