@@ -97,8 +97,8 @@ class STNetCoordConv(nn.Module):
     def __init__(self, use_stn=True):
         super(STNetCoordConv, self).__init__()
         self.use_stn=use_stn
-        self.coordconv1 = CoordConv2d(1, 10, kernel_size=5, with_r=False)
-        self.coordconv2 = CoordConv2d(10, 20, kernel_size=5, with_r=False)
+        self.conv1 = CoordConv2d(1, 10, kernel_size=5, with_r=False)
+        self.conv2 = CoordConv2d(10, 20, kernel_size=5, with_r=False)
 
         self.conv2_drop = nn.Dropout2d()
         self.fc1 = nn.Linear(320, 50)
