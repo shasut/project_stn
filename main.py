@@ -2,8 +2,10 @@
 import stn_mnist, stn_stl10, stn_svhn, stn_deformConv_mnist, vit_mnist
 
 if __name__ == "__main__":
-
-
+    """
+    This file executes all the networks.
+    """
+    
     EPOCH=1
     VERBOSE=False
 
