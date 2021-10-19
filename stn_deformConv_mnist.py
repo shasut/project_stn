@@ -1,142 +1,146 @@
-# from __future__ import print_function
-import torch
-import torch.nn.functional as F
-import torch.optim as optim
-import torchvision
+from __future__ import print_function
 
-import matplotlib
-matplotlib.use('Agg') # Must be before importing matplotlib.pyplot or pylab! (while using headless gpu cluser server)
-import matplotlib.pyplot as plt
-import numpy as np
-import datetime
+def stn_deform_conv(train_epoch=15, use_stn=True, use_coord_conv=False, verbose=False, flag=None):
+    import torch
+    import torch.nn.functional as F
+    import torch.optim as optim
+    import torchvision
 
-import os
-# print(os.getcwd())
-import time
+    import matplotlib
+    matplotlib.use('Agg') # Must be before importing matplotlib.pyplot or pylab! (while using headless gpu cluser server)
+    import matplotlib.pyplot as plt
+    import numpy as np
 
-from my_utils import createDirectoryIfNotExits, plot_loss, roc_multiclass, plot_confusion_matrix
+    import os
+    # print(os.getcwd())
+    import time
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    from my_utils import createDirectoryIfNotExits, plot_loss, roc_multiclass, plot_confusion_matrix
 
-def convert_image_np(inp):
-    """Convert a Tensor to numpy image."""
-    """Convert a Tensor to numpy image."""
-    inp = inp.numpy().transpose((1, 2, 0))
-    mean = np.array([0.485, 0.456, 0.406])
-    std = np.array([0.229, 0.224, 0.225])
-    inp = std * inp + mean
-    inp = np.clip(inp, 0, 1)
-    return inp
-def visualize_stn():
-    with torch.no_grad():
-        # Get a batch of training data
-        data = next(iter(test_loader))[0].to(device)
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-        input_tensor = data.cpu()
-        transformed_input_tensor = model.stn(data).cpu()
+    def convert_image_np(inp):
+        """Convert a Tensor to numpy image."""
+        """Convert a Tensor to numpy image."""
+        inp = inp.numpy().transpose((1, 2, 0))
+        mean = np.array([0.485, 0.456, 0.406])
+        std = np.array([0.229, 0.224, 0.225])
+        inp = std * inp + mean
+        inp = np.clip(inp, 0, 1)
+        return inp
+    def visualize_stn():
+        with torch.no_grad():
+            # Get a batch of training data
+            data = next(iter(test_loader))[0].to(device)
 
-        in_grid = convert_image_np(torchvision.utils.make_grid(input_tensor))
+            input_tensor = data.cpu()
+            transformed_input_tensor = model.stn(data).cpu()
 
-        out_grid = convert_image_np(torchvision.utils.make_grid(transformed_input_tensor))
+            in_grid = convert_image_np(torchvision.utils.make_grid(input_tensor))
 
-        # Plot the results side-by-side
-        f, axarr = plt.subplots(1, 2)
-        axarr[0].imshow(in_grid)
-        axarr[0].set_title('Dataset Images')
+            out_grid = convert_image_np(torchvision.utils.make_grid(transformed_input_tensor))
 
-        axarr[1].imshow(out_grid)
-        axarr[1].set_title('Transformed Images')
+            # Plot the results side-by-side
+            f, axarr = plt.subplots(1, 2)
+            axarr[0].imshow(in_grid)
+            axarr[0].set_title('Dataset Images')
 
-        f.savefig(fig_path + MODEL_NAME + "_grid.png", bbox_inches='tight', transparent=False)
+            axarr[1].imshow(out_grid)
+            axarr[1].set_title('Transformed Images')
 
-root_path = os.path.abspath(os.path.dirname(__file__))
-data_path = os.path.join(root_path, "data/")
-fig_path = os.path.join(root_path, "figures/")
-model_path = os.path.join(root_path, "savedModels/")
-createDirectoryIfNotExits(data_path)
-createDirectoryIfNotExits(fig_path)
-createDirectoryIfNotExits(model_path)
+            f.savefig(fig_path + MODEL_NAME + "_" + flag + "_" + "grid.png", bbox_inches='tight', transparent=False)
 
-
-
-TRAIN_EP = 15
-LRT = 1e-2
-BATCH_SIZE = 100
-VERBOSE = True
-MODEL_NAME = "STNetBaseDeformConv"
-
-from MyNetworks import STNetBaseDeformConv
-model = STNetBaseDeformConv().to(device)
-# from torchsummary import summary
-# summary(model, (1, 28, 28))
-
-optimizer = optim.SGD(model.parameters(), lr=LRT)
+    root_path = os.path.abspath(os.path.dirname(__file__))
+    data_path = os.path.join(root_path, "data/")
+    fig_path = os.path.join(root_path, "figures/")
+    model_path = os.path.join(root_path, "savedModels/")
+    createDirectoryIfNotExits(data_path)
+    createDirectoryIfNotExits(fig_path)
+    createDirectoryIfNotExits(model_path)
 
 
 
-from my_data_loaders import my_data_loader_mnist
-train_loader, test_loader = my_data_loader_mnist(data_path, BATCH_SIZE)
+    TRAIN_EP = train_epoch
+    LRT = 1e-2
+    BATCH_SIZE = 100
+    MODEL_NAME = "STNetBaseDeformConv"
 
-train_losses=[]
-val_losses=[]
-it = time.time()
-for epoch in range(TRAIN_EP):
-    model.train()
+    from MyNetworks import STNetBaseDeformConv
+    model = STNetBaseDeformConv(use_stn=use_stn).to(device)
+    print("Model: STN DeformCovNets Base Model\n")
 
-    running_loss = 0
-    t = time.time()
+    # from torchsummary import summary
+    # summary(model, (1, 28, 28))
 
-    for data, target in train_loader:
-        data, target = data.to(device), target.to(device, dtype=torch.long)
+    optimizer = optim.SGD(model.parameters(), lr=LRT)
 
-        optimizer.zero_grad()
-        output = model(data)
-        loss = F.nll_loss(output, target)
-        loss.backward()
-        optimizer.step()
-        running_loss += loss.item()
 
-    train_losses.append(running_loss/len(train_loader))
 
-    with torch.no_grad():
-        model.eval()
+    from my_data_loaders import my_data_loader_mnist
+    train_loader, test_loader = my_data_loader_mnist(data_path, BATCH_SIZE)
+
+    train_losses=[]
+    val_losses=[]
+    it = time.time()
+    for epoch in range(TRAIN_EP):
+        model.train()
+
         running_loss = 0
-        correct = 0
-        for data_v, target_v in test_loader:
-            data_v, target_v = data_v.to(device), target_v.to(device)
-            output_v = model(data_v)
-            loss_v = F.nll_loss(output_v, target_v)
-            running_loss += loss_v.item()
+        t = time.time()
 
-            pred = output_v.max(1, keepdim=True)[1]
-            correct += pred.eq(target_v.view_as(pred)).sum().item()
+        for data, target in train_loader:
+            data, target = data.to(device), target.to(device, dtype=torch.long)
 
-    val_acc = 100. * correct / len(test_loader.dataset)
+            optimizer.zero_grad()
+            output = model(data)
+            loss = F.nll_loss(output, target)
+            loss.backward()
+            optimizer.step()
+            running_loss += loss.item()
 
-    val_losses.append(running_loss/len(test_loader))
+        train_losses.append(running_loss/len(train_loader))
 
-    t=(time.time()-t)/60
-    np.save(data_path + "train_loss.npy", np.array(train_losses))
-    np.save(data_path + "val_loss.npy", np.array(val_losses))
+        with torch.no_grad():
+            model.eval()
+            running_loss = 0
+            correct = 0
+            for data_v, target_v in test_loader:
+                data_v, target_v = data_v.to(device), target_v.to(device)
+                output_v = model(data_v)
+                loss_v = F.nll_loss(output_v, target_v)
+                running_loss += loss_v.item()
 
-    if VERBOSE == True:
-        my_print='Epoch = {}   ||   train_Loss = {:6.4f}   ||   val_Loss = {:6.4f}   ||  val_ACC = {:6.4f}   ||   Duration = {:4.2f} min'.format(len(train_losses), train_losses[-1], val_losses[-1], val_acc, t )
-        print("{:80}".format(my_print))
+                pred = output_v.max(1, keepdim=True)[1]
+                correct += pred.eq(target_v.view_as(pred)).sum().item()
 
-t = round(((time.time() - it) / 60),2)
-print("total training time is {} min, for total {} epochs".format(t, TRAIN_EP))
-PATH = model_path + MODEL_NAME + "_mnist.pth"
-torch.save({
-    'model_archi': MODEL_NAME,
-    'model_state_dict': model.state_dict(),
-    'optimizer_state_dict': optimizer.state_dict(),
-    'validation_loss': val_losses,
-    'training_loss': train_losses,
-}, PATH)
-plot_loss(train_losses, val_losses, saveLocation=fig_path, plot_title= MODEL_NAME,)
+        val_acc = 100. * correct / len(test_loader.dataset)
 
-# Visualize the STN transformation on some input batch
-visualize_stn()
+        val_losses.append(running_loss/len(test_loader))
 
-roc_multiclass(model, device, test_loader, num_classes=10, saveLocation=fig_path, plot_title=MODEL_NAME)
-plot_confusion_matrix(model, device, test_loader, saveLocation=fig_path, plot_title=MODEL_NAME)
+        t=(time.time()-t)/60
+        np.save(data_path + "train_loss.npy", np.array(train_losses))
+        np.save(data_path + "val_loss.npy", np.array(val_losses))
+
+        if verbose == True:
+            my_print='Epoch = {}   ||   train_Loss = {:6.4f}   ||   val_Loss = {:6.4f}   ||  val_ACC = {:6.4f}   ||   Duration = {:4.2f} min'.format(len(train_losses), train_losses[-1], val_losses[-1], val_acc, t )
+            print("{:80}".format(my_print))
+
+    t = round(((time.time() - it) / 60),2)
+    print("total training time is {} min, for total {} epochs".format(t, TRAIN_EP))
+
+    PATH = model_path + MODEL_NAME + "_mnist.pth"
+    torch.save({
+        'model_archi': MODEL_NAME,
+        'model_state_dict': model.state_dict(),
+        'optimizer_state_dict': optimizer.state_dict(),
+        'validation_loss': val_losses,
+        'training_loss': train_losses,
+    }, PATH)
+    plot_loss(train_losses, val_losses, saveLocation=fig_path, plot_title= MODEL_NAME + "_" + flag)
+
+    # Visualize the STN transformation on some input batch
+    if use_stn:
+        visualize_stn()
+
+    roc_multiclass(model, device, test_loader, num_classes=10, saveLocation=fig_path, plot_title=MODEL_NAME+ "_" + flag)
+    plot_confusion_matrix(model, device, test_loader, saveLocation=fig_path, plot_title=MODEL_NAME+ "_" + flag)

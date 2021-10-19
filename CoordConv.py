@@ -2,7 +2,11 @@ import torch
 import torch.nn as nn
 import torch.nn.modules.conv as conv
 
-# https://github.com/walsvid/CoordConv
+"""
+The implementation of CoordConv is taken from the following source.
+https://github.com/walsvid/CoordConv
+"""
+
 class AddCoords(nn.Module):
     def __init__(self, rank, with_r=False, use_cuda=True):
         super(AddCoords, self).__init__()

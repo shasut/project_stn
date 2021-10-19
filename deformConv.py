@@ -1,13 +1,16 @@
 import torch
 import torchvision.ops
 from torch import nn
+""" 
+Deformable ConvNets(v2) 
+Literature: https://arxiv.org/abs/1811.11168
 
-# Deformable
-# ConvNets(v2)
-# literature: https: // arxiv.org / abs / 1811.11168
+Implementation source:
+https://github.com/developer0hye/PyTorch-Deformable-Convolution-v2
+
+"""
 
 
-# https://github.com/developer0hye/PyTorch-Deformable-Convolution-v2
 class DeformableConv2d(nn.Module):
     def __init__(self,
                  in_channels,
