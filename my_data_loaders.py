@@ -55,13 +55,13 @@ def my_data_loader_stl10(data_path, batch_size):
                              std=[0.229, 0.224, 0.225])
     ])
     train_loader = torch.utils.data.DataLoader(
-        datasets.STL10(root=data_path, split="train", download=False, transform=my_transform),
+        datasets.STL10(root=data_path, split="train", download=True, transform=my_transform),
         batch_size=batch_size,
         shuffle=True,
         num_workers=2)
     # Test dataset
     test_loader = torch.utils.data.DataLoader(
-        datasets.STL10(root=data_path, split="test", download=False, transform=my_transform),
+        datasets.STL10(root=data_path, split="test", download=True, transform=my_transform),
         batch_size=batch_size,
         shuffle=False,
         num_workers=2)
