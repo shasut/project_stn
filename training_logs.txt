@@ -1,0 +1,248 @@
+\Base network with STN but without coordConv, trained on MNIST (28x28 digit images)
+Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to /content/drive/My Drive/project_stn/project_stn/data/MNIST/raw/train-images-idx3-ubyte.gz
+9913344it [00:00, 54681983.03it/s]                 
+Extracting /content/drive/My Drive/project_stn/project_stn/data/MNIST/raw/train-images-idx3-ubyte.gz to /content/drive/My Drive/project_stn/project_stn/data/MNIST/raw
+
+Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz to /content/drive/My Drive/project_stn/project_stn/data/MNIST/raw/train-labels-idx1-ubyte.gz
+29696it [00:00, 76837786.29it/s]
+Extracting /content/drive/My Drive/project_stn/project_stn/data/MNIST/raw/train-labels-idx1-ubyte.gz to /content/drive/My Drive/project_stn/project_stn/data/MNIST/raw
+
+Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz to /content/drive/My Drive/project_stn/project_stn/data/MNIST/raw/t10k-images-idx3-ubyte.gz
+1649664it [00:00, 25298784.69it/s]
+Extracting /content/drive/My Drive/project_stn/project_stn/data/MNIST/raw/t10k-images-idx3-ubyte.gz to /content/drive/My Drive/project_stn/project_stn/data/MNIST/raw
+
+Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz to /content/drive/My Drive/project_stn/project_stn/data/MNIST/raw/t10k-labels-idx1-ubyte.gz
+5120it [00:00, 23808022.71it/s]
+Extracting /content/drive/My Drive/project_stn/project_stn/data/MNIST/raw/t10k-labels-idx1-ubyte.gz to /content/drive/My Drive/project_stn/project_stn/data/MNIST/raw
+
+Epoch = 1   ||   train_Loss = 1.4028   ||   val_Loss = 0.3863   ||  val_ACC = 89.7500   ||   Duration = 0.33 min
+Epoch = 2   ||   train_Loss = 0.5139   ||   val_Loss = 0.1707   ||  val_ACC = 95.2300   ||   Duration = 0.33 min
+Epoch = 3   ||   train_Loss = 0.3544   ||   val_Loss = 0.1199   ||  val_ACC = 96.3400   ||   Duration = 0.32 min
+Epoch = 4   ||   train_Loss = 0.2863   ||   val_Loss = 0.1015   ||  val_ACC = 96.8500   ||   Duration = 0.32 min
+Epoch = 5   ||   train_Loss = 0.2558   ||   val_Loss = 0.0819   ||  val_ACC = 97.4200   ||   Duration = 0.34 min
+Epoch = 6   ||   train_Loss = 0.2246   ||   val_Loss = 0.0758   ||  val_ACC = 97.5700   ||   Duration = 0.32 min
+Epoch = 7   ||   train_Loss = 0.1966   ||   val_Loss = 0.0654   ||  val_ACC = 97.8900   ||   Duration = 0.32 min
+Epoch = 8   ||   train_Loss = 0.1778   ||   val_Loss = 0.0671   ||  val_ACC = 97.7500   ||   Duration = 0.32 min
+Epoch = 9   ||   train_Loss = 0.1640   ||   val_Loss = 0.0719   ||  val_ACC = 97.4800   ||   Duration = 0.32 min
+Epoch = 10   ||   train_Loss = 0.1561   ||   val_Loss = 0.0675   ||  val_ACC = 97.8900   ||   Duration = 0.32 min
+total training time is 3.24 min, for total 10 epochs
+Confusion Matrix:
+ [[ 968    0    1    0    0    0    7    1    1    2]
+ [   0 1124    5    1    0    0    1    3    1    0]
+ [   3    1 1008    6    6    0    2    4    2    0]
+ [   2    0    5  996    0    3    0    0    3    1]
+ [   0    0    0    1  958    0    5    1    0   17]
+ [   6    1    0    6    1  863   10    2    3    0]
+ [   7    3    1    0    6    1  939    0    1    0]
+ [   1    3   12    2    2    0    0 1001    2    5]
+ [   2    0    6    1    4    3    1    3  951    3]
+ [   1    2    0    1    6    5    0   10    3  981]]
+----------------------------------------
+\Base network with STN and coordConv, trained on MNIST
+Epoch = 1   ||   train_Loss = 1.8924   ||   val_Loss = 0.6282   ||  val_ACC = 85.1300   ||   Duration = 0.37 min
+Epoch = 2   ||   train_Loss = 0.7121   ||   val_Loss = 0.2079   ||  val_ACC = 94.5900   ||   Duration = 0.36 min
+Epoch = 3   ||   train_Loss = 0.4326   ||   val_Loss = 0.1601   ||  val_ACC = 95.2800   ||   Duration = 0.36 min
+Epoch = 4   ||   train_Loss = 0.3192   ||   val_Loss = 0.0991   ||  val_ACC = 96.9100   ||   Duration = 0.37 min
+Epoch = 5   ||   train_Loss = 0.2635   ||   val_Loss = 0.1039   ||  val_ACC = 96.9500   ||   Duration = 0.36 min
+Epoch = 6   ||   train_Loss = 0.2281   ||   val_Loss = 0.0779   ||  val_ACC = 97.4900   ||   Duration = 0.36 min
+Epoch = 7   ||   train_Loss = 0.2141   ||   val_Loss = 0.0698   ||  val_ACC = 97.7400   ||   Duration = 0.35 min
+Epoch = 8   ||   train_Loss = 0.1938   ||   val_Loss = 0.0664   ||  val_ACC = 97.9700   ||   Duration = 0.36 min
+Epoch = 9   ||   train_Loss = 0.1762   ||   val_Loss = 0.0560   ||  val_ACC = 98.3200   ||   Duration = 0.36 min
+Epoch = 10   ||   train_Loss = 0.1611   ||   val_Loss = 0.0581   ||  val_ACC = 98.2900   ||   Duration = 0.36 min
+total training time is 3.6 min, for total 10 epochs
+Confusion Matrix:
+ [[ 972    0    2    0    0    2    3    1    0    0]
+ [   0 1122    3    0    0    1    3    0    6    0]
+ [   4    1 1012    6    0    0    1    4    4    0]
+ [   0    0    8  989    0    6    0    4    3    0]
+ [   0    0    2    0  972    0    6    0    1    1]
+ [   2    0    0    3    1  881    1    1    1    2]
+ [   3    2    0    0    0    3  950    0    0    0]
+ [   2    7   15    2    0    1    0  997    1    3]
+ [   0    0    3    0    1    3    0    2  959    6]
+ [   4    5    0    1   13    2    0    8    1  975]]
+----------------------------------------
+\Base network with STN but without coordConv, trained on SVHN (32x32x3 color digit images)
+Downloading http://ufldl.stanford.edu/housenumbers/train_32x32.mat to /content/drive/My Drive/project_stn/project_stn/data/train_32x32.mat
+182041600it [00:21, 8530542.15it/s]                   
+Downloading http://ufldl.stanford.edu/housenumbers/test_32x32.mat to /content/drive/My Drive/project_stn/project_stn/data/test_32x32.mat
+64275456it [00:03, 17305530.79it/s]                  
+Epoch = 1   ||   train_Loss = 2.2623   ||   val_Loss = 2.2214   ||  val_ACC = 19.5874   ||   Duration = 0.55 min
+Epoch = 2   ||   train_Loss = 2.2266   ||   val_Loss = 2.1735   ||  val_ACC = 24.0358   ||   Duration = 0.55 min
+Epoch = 3   ||   train_Loss = 2.0624   ||   val_Loss = 1.6910   ||  val_ACC = 46.9806   ||   Duration = 0.55 min
+Epoch = 4   ||   train_Loss = 1.6000   ||   val_Loss = 1.1299   ||  val_ACC = 67.4554   ||   Duration = 0.55 min
+Epoch = 5   ||   train_Loss = 1.2804   ||   val_Loss = 0.9121   ||  val_ACC = 75.5032   ||   Duration = 0.54 min
+Epoch = 6   ||   train_Loss = 1.0950   ||   val_Loss = 0.7847   ||  val_ACC = 79.4714   ||   Duration = 0.54 min
+Epoch = 7   ||   train_Loss = 0.9816   ||   val_Loss = 0.6800   ||  val_ACC = 82.4562   ||   Duration = 0.55 min
+Epoch = 8   ||   train_Loss = 0.8986   ||   val_Loss = 0.6535   ||  val_ACC = 82.3717   ||   Duration = 0.55 min
+Epoch = 9   ||   train_Loss = 0.8452   ||   val_Loss = 0.6023   ||  val_ACC = 83.9275   ||   Duration = 0.56 min
+Epoch = 10   ||   train_Loss = 0.7984   ||   val_Loss = 0.5507   ||  val_ACC = 85.6484   ||   Duration = 0.56 min
+total training time is 5.51 min, for total 10 epochs
+Confusion Matrix:
+ [[1451   71   25   19   15    3   69    7    2   82]
+ [  34 4832   37   36   85   16    8   42    7    2]
+ [   9   90 3793   50   40   27   16   94   10   20]
+ [  24  142  110 2274   39  109   45   19   34   86]
+ [  18  111   52   64 2182   24   18    8   11   35]
+ [   7   23   30  123   27 2017  121    5    6   25]
+ [  65   39    7   42   49   94 1633    4   23   21]
+ [   6  160   45   30    4   26    6 1739    1    2]
+ [  42   38   39  132   28   32  175    4 1129   41]
+ [  62   31  105   58   13   43   16    8   13 1246]]
+----------------------------------------
+\Base network with STN and coordConv, trained on SVHN (32x32x3 color digit images)
+Using downloaded and verified file: /content/drive/My Drive/project_stn/project_stn/data/train_32x32.mat
+Using downloaded and verified file: /content/drive/My Drive/project_stn/project_stn/data/test_32x32.mat
+Epoch = 1   ||   train_Loss = 2.2503   ||   val_Loss = 2.2206   ||  val_ACC = 19.5874   ||   Duration = 0.57 min
+Epoch = 2   ||   train_Loss = 2.2255   ||   val_Loss = 2.1735   ||  val_ACC = 19.5874   ||   Duration = 0.58 min
+Epoch = 3   ||   train_Loss = 2.1221   ||   val_Loss = 1.8558   ||  val_ACC = 39.3400   ||   Duration = 0.58 min
+Epoch = 4   ||   train_Loss = 1.7115   ||   val_Loss = 1.2435   ||  val_ACC = 64.8202   ||   Duration = 0.58 min
+Epoch = 5   ||   train_Loss = 1.2999   ||   val_Loss = 0.9074   ||  val_ACC = 76.1409   ||   Duration = 0.59 min
+Epoch = 6   ||   train_Loss = 1.0751   ||   val_Loss = 0.7665   ||  val_ACC = 80.0400   ||   Duration = 0.58 min
+Epoch = 7   ||   train_Loss = 0.9421   ||   val_Loss = 0.6700   ||  val_ACC = 81.7379   ||   Duration = 0.56 min
+Epoch = 8   ||   train_Loss = 0.8557   ||   val_Loss = 0.5969   ||  val_ACC = 84.0235   ||   Duration = 0.57 min
+Epoch = 9   ||   train_Loss = 0.7963   ||   val_Loss = 0.6088   ||  val_ACC = 83.5126   ||   Duration = 0.55 min
+Epoch = 10   ||   train_Loss = 0.7482   ||   val_Loss = 0.5173   ||  val_ACC = 86.0518   ||   Duration = 0.58 min
+total training time is 5.76 min, for total 10 epochs
+Confusion Matrix:
+ [[1512   34   29   18   12    8  103    5    1   22]
+ [  51 4678   68   47  105   25   11  102    7    5]
+ [  13   59 3852   38   36   21   13   55   26   36]
+ [  38   95   74 2182   31  167   64   29   93  109]
+ [  22   53   44   39 2284   11   23    8    7   32]
+ [   7   14   19  135   21 1974  165    5   11   33]
+ [  42   29    4   48   43   48 1713    4   34   12]
+ [   6   93   66   16    6   29    2 1796    2    3]
+ [  58   14   23   66   27   44  229    4 1127   68]
+ [ 121   18   57   27   10   36   23    4   16 1283]]
+----------------------------------------
+\Base network with STN but without coordConv, trained on SLT10 (96x96x3 color natural images)
+Downloading http://ai.stanford.edu/~acoates/stl10/stl10_binary.tar.gz to /content/drive/My Drive/project_stn/project_stn/data/stl10_binary.tar.gz
+2640397312it [01:12, 36513159.92it/s]                    
+Extracting /content/drive/My Drive/project_stn/project_stn/data/stl10_binary.tar.gz to /content/drive/My Drive/project_stn/project_stn/data/
+Files already downloaded and verified
+Epoch = 1   ||   train_Loss = 2.2711   ||   val_Loss = 2.2088   ||  val_ACC = 25.7500   ||   Duration = 0.19 min
+Epoch = 2   ||   train_Loss = 2.2110   ||   val_Loss = 2.1259   ||  val_ACC = 26.9375   ||   Duration = 0.17 min
+Epoch = 3   ||   train_Loss = 2.1377   ||   val_Loss = 2.0302   ||  val_ACC = 29.6125   ||   Duration = 0.18 min
+Epoch = 4   ||   train_Loss = 2.0592   ||   val_Loss = 1.9303   ||  val_ACC = 32.5000   ||   Duration = 0.18 min
+Epoch = 5   ||   train_Loss = 1.9912   ||   val_Loss = 1.8559   ||  val_ACC = 35.5875   ||   Duration = 0.18 min
+Epoch = 6   ||   train_Loss = 1.9523   ||   val_Loss = 1.8312   ||  val_ACC = 36.5125   ||   Duration = 0.18 min
+Epoch = 7   ||   train_Loss = 1.8951   ||   val_Loss = 1.7751   ||  val_ACC = 37.1375   ||   Duration = 0.18 min
+Epoch = 8   ||   train_Loss = 1.8695   ||   val_Loss = 1.7396   ||  val_ACC = 37.9625   ||   Duration = 0.18 min
+Epoch = 9   ||   train_Loss = 1.8465   ||   val_Loss = 1.7117   ||  val_ACC = 38.8750   ||   Duration = 0.17 min
+Epoch = 10   ||   train_Loss = 1.8254   ||   val_Loss = 1.6960   ||  val_ACC = 39.3750   ||   Duration = 0.17 min
+Epoch = 11   ||   train_Loss = 1.7930   ||   val_Loss = 1.6799   ||  val_ACC = 40.4250   ||   Duration = 0.18 min
+Epoch = 12   ||   train_Loss = 1.7722   ||   val_Loss = 1.6399   ||  val_ACC = 40.5250   ||   Duration = 0.18 min
+Epoch = 13   ||   train_Loss = 1.7332   ||   val_Loss = 1.6227   ||  val_ACC = 42.1125   ||   Duration = 0.18 min
+Epoch = 14   ||   train_Loss = 1.7254   ||   val_Loss = 1.6085   ||  val_ACC = 41.9500   ||   Duration = 0.17 min
+Epoch = 15   ||   train_Loss = 1.7119   ||   val_Loss = 1.6140   ||  val_ACC = 42.2000   ||   Duration = 0.18 min
+Epoch = 16   ||   train_Loss = 1.6892   ||   val_Loss = 1.5794   ||  val_ACC = 42.7250   ||   Duration = 0.18 min
+Epoch = 17   ||   train_Loss = 1.6773   ||   val_Loss = 1.5691   ||  val_ACC = 42.9250   ||   Duration = 0.18 min
+Epoch = 18   ||   train_Loss = 1.6608   ||   val_Loss = 1.5543   ||  val_ACC = 44.3750   ||   Duration = 0.18 min
+Epoch = 19   ||   train_Loss = 1.6448   ||   val_Loss = 1.5500   ||  val_ACC = 44.3125   ||   Duration = 0.18 min
+Epoch = 20   ||   train_Loss = 1.6348   ||   val_Loss = 1.5262   ||  val_ACC = 45.3875   ||   Duration = 0.18 min
+total training time is 3.55 min, for total 20 epochs
+Confusion Matrix:
+ [[531  39  39  14   5   3  20   1 109  39]
+ [ 44 234  28 108 136  40  66 115  14  15]
+ [ 11  11 514  33  11   4  16  32  27 141]
+ [  6  59  41 240 136  36  84 141  19  38]
+ [ 15  47  16  94 329  31 147  91   9  21]
+ [ 15  76  20 122 147 105 167 128   7  13]
+ [  6  27  21  62  87  49 431  84   1  32]
+ [  6  41  18 104 137  67  64 345   7  11]
+ [ 80  18  44   9   6   5   6   9 499 124]
+ [ 29  18 159  24  10   6  28  34  89 403]]
+----------------------------------------
+\Base network with STN and coordConv, trained on SLT10 (96x96x3 color natural images)
+Files already downloaded and verified
+Files already downloaded and verified
+Epoch = 1   ||   train_Loss = 2.2544   ||   val_Loss = 2.1517   ||  val_ACC = 24.9500   ||   Duration = 0.18 min
+Epoch = 2   ||   train_Loss = 2.1573   ||   val_Loss = 2.0250   ||  val_ACC = 30.2250   ||   Duration = 0.18 min
+Epoch = 3   ||   train_Loss = 2.0699   ||   val_Loss = 1.9395   ||  val_ACC = 32.7750   ||   Duration = 0.18 min
+Epoch = 4   ||   train_Loss = 2.0090   ||   val_Loss = 1.8775   ||  val_ACC = 33.9875   ||   Duration = 0.17 min
+Epoch = 5   ||   train_Loss = 1.9576   ||   val_Loss = 1.8250   ||  val_ACC = 36.2875   ||   Duration = 0.17 min
+Epoch = 6   ||   train_Loss = 1.9360   ||   val_Loss = 1.8040   ||  val_ACC = 36.3500   ||   Duration = 0.18 min
+Epoch = 7   ||   train_Loss = 1.9002   ||   val_Loss = 1.7702   ||  val_ACC = 38.1750   ||   Duration = 0.17 min
+Epoch = 8   ||   train_Loss = 1.8623   ||   val_Loss = 1.7312   ||  val_ACC = 38.8625   ||   Duration = 0.17 min
+Epoch = 9   ||   train_Loss = 1.8383   ||   val_Loss = 1.7124   ||  val_ACC = 38.1125   ||   Duration = 0.18 min
+Epoch = 10   ||   train_Loss = 1.8133   ||   val_Loss = 1.7003   ||  val_ACC = 39.4375   ||   Duration = 0.18 min
+Epoch = 11   ||   train_Loss = 1.7913   ||   val_Loss = 1.6533   ||  val_ACC = 40.3375   ||   Duration = 0.18 min
+Epoch = 12   ||   train_Loss = 1.7503   ||   val_Loss = 1.6456   ||  val_ACC = 41.0375   ||   Duration = 0.18 min
+Epoch = 13   ||   train_Loss = 1.7304   ||   val_Loss = 1.6281   ||  val_ACC = 42.2375   ||   Duration = 0.18 min
+Epoch = 14   ||   train_Loss = 1.7114   ||   val_Loss = 1.6012   ||  val_ACC = 43.4375   ||   Duration = 0.17 min
+Epoch = 15   ||   train_Loss = 1.7125   ||   val_Loss = 1.6024   ||  val_ACC = 43.2625   ||   Duration = 0.18 min
+Epoch = 16   ||   train_Loss = 1.6730   ||   val_Loss = 1.5751   ||  val_ACC = 43.5125   ||   Duration = 0.18 min
+Epoch = 17   ||   train_Loss = 1.6661   ||   val_Loss = 1.5634   ||  val_ACC = 43.0500   ||   Duration = 0.18 min
+Epoch = 18   ||   train_Loss = 1.6211   ||   val_Loss = 1.5530   ||  val_ACC = 44.6000   ||   Duration = 0.18 min
+Epoch = 19   ||   train_Loss = 1.6217   ||   val_Loss = 1.5398   ||  val_ACC = 44.2375   ||   Duration = 0.18 min
+Epoch = 20   ||   train_Loss = 1.6152   ||   val_Loss = 1.5185   ||  val_ACC = 44.8375   ||   Duration = 0.17 min
+total training time is 3.55 min, for total 20 epochs
+Confusion Matrix:
+ [[533  31  52   5   5   6  16   0 143   9]
+ [ 52 253  57  85 102  27  35 155  20  14]
+ [ 12  11 565  23   6   5  12  20  62  84]
+ [  9  84  57 189 112  48  77 163  25  36]
+ [ 28  63  24  70 310  41 119 117  11  17]
+ [ 11  87  30  92 133 106 170 154   8   9]
+ [  8  60  28  38  76  61 407 103   5  14]
+ [  4  88  30  88  85  41  61 387   4  12]
+ [ 78  15  53   7   8   0   2  10 566  61]
+ [ 40  17 210  15   9   6  13  39 180 271]]
+----------------------------------------
+\Base network with STN and deformable CovNets (v2), trained on MNIST (28x28 digit images)
+Epoch = 1   ||   train_Loss = 2.3022   ||   val_Loss = 2.2983   ||  val_ACC = 10.3300   ||   Duration = 0.71 min
+Epoch = 2   ||   train_Loss = 2.2944   ||   val_Loss = 2.2783   ||  val_ACC = 31.8900   ||   Duration = 0.75 min
+Epoch = 3   ||   train_Loss = 1.9868   ||   val_Loss = 0.7051   ||  val_ACC = 80.2400   ||   Duration = 0.74 min
+Epoch = 4   ||   train_Loss = 0.7796   ||   val_Loss = 0.2341   ||  val_ACC = 93.2700   ||   Duration = 0.75 min
+Epoch = 5   ||   train_Loss = 0.4046   ||   val_Loss = 0.1279   ||  val_ACC = 96.3800   ||   Duration = 0.74 min
+Epoch = 6   ||   train_Loss = 0.3017   ||   val_Loss = 0.1051   ||  val_ACC = 97.2400   ||   Duration = 0.74 min
+Epoch = 7   ||   train_Loss = 0.2379   ||   val_Loss = 0.0694   ||  val_ACC = 97.9600   ||   Duration = 0.74 min
+Epoch = 8   ||   train_Loss = 0.2031   ||   val_Loss = 0.1175   ||  val_ACC = 97.0000   ||   Duration = 0.74 min
+Epoch = 9   ||   train_Loss = 0.1900   ||   val_Loss = 0.0746   ||  val_ACC = 97.9100   ||   Duration = 0.74 min
+Epoch = 10   ||   train_Loss = 0.1640   ||   val_Loss = 0.0774   ||  val_ACC = 98.0100   ||   Duration = 0.73 min
+total training time is 7.38 min, for total 10 epochs
+Confusion Matrix:
+ [[ 971    1    2    0    0    1    3    1    1    0]
+ [   0 1126    0    6    0    0    0    1    2    0]
+ [   1    4  997    9    0    0    0    9   11    1]
+ [   0    0    0  999    0    5    0    1    3    2]
+ [   0    1    3    0  968    0    8    0    0    2]
+ [   1    0    0   12    0  871    1    1    0    6]
+ [   3    3    0    0    1    5  945    0    1    0]
+ [   1    4    5    0    1    0    0 1003    2   12]
+ [   0    0    1    8    2    5    0    2  932   24]
+ [   4    0    0    3    7    0    0    6    0  989]]
+----------------------------------------
+
+STN base mnist with stn with coord
+my PID =  439
+Epoch = 1   ||   train_Loss = 2.3039   ||   val_Loss = 2.3018   ||  val_ACC = 10.3100   ||   Duration = 0.52 min
+Epoch = 2   ||   train_Loss = 2.2570   ||   val_Loss = 2.0634   ||  val_ACC = 21.5900   ||   Duration = 0.51 min
+Epoch = 3   ||   train_Loss = 1.7237   ||   val_Loss = 1.4430   ||  val_ACC = 45.8800   ||   Duration = 0.51 min
+Epoch = 4   ||   train_Loss = 1.3019   ||   val_Loss = 1.1098   ||  val_ACC = 55.8000   ||   Duration = 0.52 min
+Epoch = 5   ||   train_Loss = 1.0106   ||   val_Loss = 0.8862   ||  val_ACC = 73.9500   ||   Duration = 0.51 min
+Epoch = 6   ||   train_Loss = 0.7172   ||   val_Loss = 0.5415   ||  val_ACC = 82.8900   ||   Duration = 0.51 min
+Epoch = 7   ||   train_Loss = 0.4848   ||   val_Loss = 0.3393   ||  val_ACC = 90.7000   ||   Duration = 0.51 min
+Epoch = 8   ||   train_Loss = 0.4048   ||   val_Loss = 0.3179   ||  val_ACC = 91.4800   ||   Duration = 0.53 min
+Epoch = 9   ||   train_Loss = 0.2762   ||   val_Loss = 0.2259   ||  val_ACC = 94.4000   ||   Duration = 0.52 min
+Epoch = 10   ||   train_Loss = 0.2402   ||   val_Loss = 0.2724   ||  val_ACC = 92.9900   ||   Duration = 0.52 min
+total training time is 5.17 min, for total 10 epochs
+Confusion Matrix:
+ [[ 835    0    3    9    0  114    4    1   12    2]
+ [   0 1114    1    0    1    0    2    8    3    6]
+ [   0    0  932   12    1    2    1   73    8    3]
+ [   0    0    6  969    0    3    0   16   13    3]
+ [   0    0    0    0  941    1    0    6    0   34]
+ [   1    0    1   18    0  803    5    1   58    5]
+ [   0    2    1    0    2   60  836    0   18   39]
+ [   0    8   15    0    1    0    0  988    5   11]
+ [   0    4    1    5    0    1    0   10  943   10]
+ [   1    9    0    0   11    3    0    9   38  938]]
+The results with related figures and trained models are stored in the following directories: 
+/content/drive/My Drive/project_stn/project_stn/figures/
+/content/drive/My Drive/project_stn/project_stn/savedModels/
