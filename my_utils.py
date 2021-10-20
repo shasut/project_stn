@@ -5,13 +5,34 @@ matplotlib.use('Agg') # Must be before importing matplotlib.pyplot or pylab! (wh
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
+import pandas as pd
+import seaborn as sns
 
 def createDirectoryIfNotExits(modelSaveLocation):
+    """
+    this functions creates a directory if the directore does not exists.
+    args:
+        modelSaveLocation (string): the directory location to created.
+   
+    Return:
+        modelSaveLocation
+    
+    """
     if not os.path.exists(modelSaveLocation):
         os.makedirs(modelSaveLocation)
     return modelSaveLocation
 
+
 def plot_loss(trainLoss, valLoss, saveLocation='', plot_title="loss_plot_"):
+    """
+    This functions plots the train and validation loss of the deep learning model. This function shows plot in decimal and lograthimic scale (Y-axis)
+    args:
+        trainLoss (numpy.ndarray): the train loss vector. (1d array)
+        valLoss (numpy.ndarray): the validation loss vector. (1d array)
+        saveLocation (String): the location for writing the plot figure. 
+        plot_title (String): title of the plot
+    """
+
     fig = plt.figure(figsize=(18, 6))
     plt.subplot(121)
     x = [x for x in range(0, len(valLoss))]
@@ -40,10 +61,32 @@ def plot_loss(trainLoss, valLoss, saveLocation='', plot_title="loss_plot_"):
 
 
 def stable_sigmoid(x):
+    """
+    Sigmoid tranformation function
+    
+    Args:
+        x (numpy.ndarray) : the logit vector
+        
+    Returns:
+        Sigmoidal transformed array of x 
+    """
+    
     sig = np.where(x < 0, np.exp(x)/(1 + np.exp(x)), 1/(1 + np.exp(-x)))
     return sig
 
 def test_class_probabilities(model, device, test_loader, which_class):
+    """
+    This function computes the class probability for a given sample.
+    
+    Args:
+        model (torch.nn.Module)
+        device (String) : cpu or cuda
+        test_loader (torch.utils.data.DataLoader) : data loader
+        which_class (int) : the class number
+    
+    Return:
+        [targets], [probabilities] : list of actual targes in one hot format, list of probabilites
+    """
     model.eval()
     actuals = []
     probabilities = []
@@ -60,6 +103,19 @@ def test_class_probabilities(model, device, test_loader, which_class):
 
 
 def test_label_predictions(model, device, test_loader):
+    """
+    This function computes the class probability for a given sample.
+    
+    Args:
+        model (torch.nn.Module)
+        device (String) : cpu or cuda
+        test_loader (torch.utils.data.DataLoader) : data loader
+        which_class (int) : the class number
+    
+    Return:
+        [targets], [predictions] : list of actual targes in one hot format, list of predictions
+    """
+
     model.eval()
     actuals = []
     predictions = []
@@ -77,6 +133,17 @@ from sklearn.metrics import roc_curve, auc, confusion_matrix
 
 
 def roc_multiclass(model, device, test_loader, num_classes, saveLocation, plot_title):
+   """
+   This function plots the ROC for all the classes in a single figure. 
+   
+   Args:
+       model (torch.nn.Module) 
+       device (String) : cpu or cuda 
+       test_loader (torch.utils.data.DataLoader) : data loader 
+       num_classes (int): total number of classes
+       saveLocation (String): the location for writing the plot figure. 
+       plot_title (String): title of the plot
+   """
     lw = 2
     N_CLASS = num_classes
     f = plt.figure()
@@ -98,9 +165,19 @@ def roc_multiclass(model, device, test_loader, num_classes, saveLocation, plot_t
     f.savefig(saveLocation + plot_title+"_roc.png", bbox_inches='tight', transparent=False)
 
 
-import pandas as pd
-import seaborn as sns
 def plot_confusion_matrix(model, device, test_loader, saveLocation, plot_title):
+       """
+   This function plots the Confusion for all the classes in a figure. 
+   
+   Args:
+       model (torch.nn.Module) 
+       device (String) : cpu or cuda 
+       test_loader (torch.utils.data.DataLoader) : data loader 
+       num_classes (int): total number of classes
+       saveLocation (String): the location for writing the plot figure. 
+       plot_title (String): title of the plot
+   """
+
     actuals, predictions = test_label_predictions(model, device, test_loader)
     arr = confusion_matrix(actuals, predictions)
     print("Confusion Matrix:\n", arr)
