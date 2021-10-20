@@ -22,7 +22,7 @@ ROC is suitable when classes are balanced, which is the case in this experiment.
 Confusion matrix depicts the how the classes are correctly and incorectly classified.
 In the case of MNIST, confusion matrix can tell which digits are difficult to classify because of their similar structural appearance.
 
-
+The plot figures are provided in ```results/figures``` directory of this repo.
 
 ## Datasets
 The used datasets are MNIST, SVHN and STL10.
@@ -32,6 +32,7 @@ Run the ``` main.py``` file.
 
 It will install all required datasets to $ROOT_DIR$ + "data/" location, store performance evaluation figures in $ROOT_DIR$ + "figures/", saved models at $ROOT_DIR$ + "savedModels/".
 
+
 ### References
 [STN](https://arxiv.org/abs/1506.02025)
 
@@ -40,3 +41,7 @@ It will install all required datasets to $ROOT_DIR$ + "data/" location, store pe
 [deformable CovNets v2](https://arxiv.org/abs/1811.11168) [PyTorch Implementation](https://github.com/developer0hye/PyTorch-Deformable-Convolution-v2)
 
 [ViT](https://arxiv.org/abs/2010.11929)
+
+
+### Paper Presentation
+A presentation pdf document is added to the ```documents``` directory of this repo.
