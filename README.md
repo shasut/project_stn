@@ -42,6 +42,7 @@ It will install all required datasets to $ROOT_DIR$ + "data/" location, store pe
 
 [ViT](https://arxiv.org/abs/2010.11929)
 
+### Training Logs
+A logs of traiing is provided in ```training_logs.txt```
 
-### Paper Presentation
-A presentation pdf document is added to the ```documents``` directory of this repo.
+
