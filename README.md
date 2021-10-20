@@ -4,7 +4,7 @@
 Python (>=3.6), PyTorch (>=1.9), transformers (4.11.3).
 
 ## Goal
-The goal of this project to compare performances of different kinds of model architectures for image classification task. A number of networks are implemented. For classification task, 10-class classifcation of hand written digit (MINIST) images are performed. Additionally, color digits (SVHN) and natural images classifications are also performed. 
+We compare performances of different kinds of model architectures for image classification task. A number of networks are implemented. For classification task, 10-class classifcation of hand written digit (MINIST) images are performed. Additionally, color digits (SVHN) and natural images classifications are also performed. 
 
 ## Implemented Networks
 The following different types of networks are implement for multiclass classification task. 
